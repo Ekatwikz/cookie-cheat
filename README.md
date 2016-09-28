@@ -1,5 +1,5 @@
 # katwitool
 **How to use:**  
-Paste the code into the cookieclicker browser console  
+Use a bookmarklet to load the script with the game open  
 *OR*  
-Click the bookmarklet with the game open
+Paste the code into the cookieclicker browser console  
