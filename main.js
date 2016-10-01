@@ -12,7 +12,6 @@ var cookieCheat = {
 				this[i].push(false);
 			}
 		}
-		
 		document.getElementById("topBar").innerHTML = "<div>KATWITOOL</div>";
 		var outdiv, out;
 		for (item in this.setup) {
