@@ -12,8 +12,8 @@ var outopts=[], outdiv, outselect, out;var cookieCheat = {
 		],
 		[
 			"multi", "autobuy",
-			{className: "buyCheap", name: "Buy ch OFF", action: "javascript:cookieCheat.toggle('autoBuy', 0)"},
-			{className: "buyEfiicient", name: "Buy eff OFF", action: "javascript:cookieCheat.toggle('autoBuy', 1)"}
+			{className: "buyCheap", name: "Buy ch OFF", action: "javascript:cookieCheat.toggle('autoBuy', 0, 'buyCheap')"},
+			{className: "buyEff", name: "Buy eff OFF", action: "javascript:cookieCheat.toggle('autoBuy', 1, 'buyEff')"}
 		],
 	],
 	start: function () {
@@ -65,23 +65,29 @@ var outopts=[], outdiv, outselect, out;var cookieCheat = {
 			document.getElementById("topBar").appendChild(outdiv);
 		}
 	},
-	toggle: function (cheat, type) {
+	toggle: function (cheat, type, className) {
+		if (!className) {
+			className = cheat;
+		}
 		if (!this[cheat][1]) {
 			this[cheat][1] = !this[cheat][1];
 			if (this[cheat][2]) {
 				clearInterval(this[cheat][2]);
 			}
 			this[cheat][2] = setInterval(this[cheat][0][type], 1);
-			for (i = 0; i < document.getElementsByClassName(cheat); i++) {
-				console.log(item);
-				document.getElementsByClassName(cheat)[item].innerHTML = document.getElementsByClassName(cheat)[item].innerHTML.slice(0, -3) + "ON";
+			var state = "ON";
+			for (i = 0; i < document.getElementsByClassName(className).length; i++) {
+				console.log(i);
+				document.getElementsByClassName(className)[i].innerHTML = document.getElementsByClassName(className)[i].innerHTML.slice(0, -3) + state;
 			}
 		} else {
 			this[cheat][1] = !this[cheat][1];
 			clearInterval(this[cheat][2]);
-			for (i = 0; i < document.getElementsByClassName(cheat); i++) {
-				console.log(item);
-				document.getElementsByClassName(cheat)[item].innerHTML = document.getElementsByClassName(cheat)[item].innerHTML.slice(0, -2) + "OFF";
+			this[cheat][2] = !this[cheat][2];
+			var state = "OFF";
+			for (i = 0; i < document.getElementsByClassName(className).length; i++) {
+				console.log(i);
+				document.getElementsByClassName(className)[i].innerHTML = document.getElementsByClassName(className)[i].innerHTML.slice(0, -2) + state;
 			}
 		}
 	},
