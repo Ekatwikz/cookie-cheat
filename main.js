@@ -118,9 +118,9 @@ var outopts=[], outdiv, outselect, out;var cookieCheat = {
 	}, function () {
 		var efficiencies = [];
 		for (item in Game.ObjectsById) {
-			efficiencies.push(Game.ObjectsById[item].price / Game.ObjectsById[2].storedCps);
+			efficiencies.push(Game.ObjectsById[item].price / Game.ObjectsById[item].storedCps);
 			/*or this? someone help me understand the difference
-			efficiencies.push(Game.ObjectsById[item].price / Game.ObjectsById[2].cps(ObjectsById[2]));*/
+			efficiencies.push(Game.ObjectsById[item].price / Game.ObjectsById[item].cps(ObjectsById[2]));*/
 		}
 		Game.ObjectsById[efficiencies.indexOf(Math.min.apply(Math, efficiencies))].buy();
 	}]], 
