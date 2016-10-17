@@ -10,9 +10,9 @@ setInterval(function () {
 				Game.UpgradesById[upgrade].buy();
 			}
 		}
-		var prices = [];
+		var efficiencies = [];
 		for (item in Game.ObjectsById) {
-			prices.push(Game.ObjectsById[item].price);
+			efficiencies.push(Game.ObjectsById[item].price / Game.ObjectsById[item].storedCps);
 		}
-		Game.ObjectsById[prices.indexOf(Math.min.apply(Math, prices))].buy();
+		Game.ObjectsById[efficiencies.indexOf(Math.min.apply(Math, efficiencies))].buy();
 	}, 1);
